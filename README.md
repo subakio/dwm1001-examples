@@ -1,92 +1,90 @@
 # dwm1001-keil-examples
 
-*Note that the examples below consist in very basic application using the UWB features of the DWM1001C. These examples are not intended to be used in a commercial application and may not comply with regulation requirements.*
+*Note 아래 예제는 DWM1001C의 UWB 특징을 이용한 아주 간단한 어플리케이션으로 되어 있다. 이 예제는 산업용 어플리케이션 용도가 아니고 일반적인 요구사항에 무응하지 못할 수 있다.*
 
-*Advanced firmware for DWM1001C that would comply with regulations can be found on https://www.decawave.com/product/dwm1001-module/*
+*DWM1001C용 고급 펌웨어는 규칙을 준수하며 https://www.decawave.com/product/dwm1001-module/ 에서 찾을 수 있다.*
 
-## Overview
+## 개요
 
-This project contains C simple examples for DWM1001 hardware and its derivatives, such as the DWM1001-DEV board.
+DWM1001 하드웨어용 C 예제를 포함하고 있어서 DWM1001-DEV 보드에서 사용 가능하다.
 
-The DWM1001 module is a Ultra Wideband (UWB) and Bluetooth hardware based on DecaWave's DW1000 IC and Nordic Semiconductor nrF52832 SoC. It allows to build a scalable Two-Way-Ranging (TWR) RTLS systems with up to thousands of tags. 
+DWM1001 모듈은 nrF52832 Soc와 DecaWave의 DW1000 IC 기반의 UWB 및 블루투스 하드웨어이다. 수 천개의 tags까지 가능한 확장 Two_Way-Ranging(TWR) RTLS를 확장할 수 있다.
 
-The DWM1001-DEV is a development board for the DWM1001 module. It contains an integrated Jlink to facilitate development and debbuging.
-For more information about DWM1001, please visit www.decawave.com.
+DWM1001-DEV는 DWM1001 모듈용 개발 보드이다. 개발과 디버깅을 위해서 Jlink를 통합되어 제공하고 있다.
+DWM1001관련 더 상세한 정보는 www.decawave.com을 방문하자.
 
-The C simple examples allow user to discover the key functionalities offered by the DWM1001 and UWB. These examples are customized for DWM1001-DEV, and some modifications will be necessary to port them to other DWM1001 based hardware (in particular LED and button interface)
+C simple 예제는 DWM1001과 UWB가 제공하는 핵심 기능을 경험할 수 있다. 이 예제들은 DWM1001-DEV를 커스텀마이즈하며 다른 DWM1001 기반 HW에 포팅하기 위해서는 일부 수정이 필요하다.(특히 LED와 버튼 인터페이스)
 
-The project is built as follow : 
+프로젝트는 다음과 같이 되어 있다: 
 ```
 dwm1001-keil-examples/
-├── boards            // DWM1001-DEV board specific definitions
-├── deca_driver       // DW1000 API software package 2.04 
+├── boards            // DWM1001-DEV 보드 스펙 정의
+├── deca_driver       // DW1000 API SW 패키지 2.04 
 ├── examples          // C simple examples 
 │   ├── ss_twr_init   // Single Sided Two Way Ranging Initiator example
 │   ├── ss_twr_resp   // Single Sided Two Way Ranging Responder example
-│   └── twi_accel     // LIS2DH12 accelerometer example with Two Wire interface 
+│   └── twi_accel     // 2 Wire 인터페이스를 가진 LIS2DH12 accelerometer example
 ├── nRF5_SDK_14.2.0   // Nordic Semiconductor SDK 14.2 for nrF52832
 └── README.md
 ```
-For more information about nrF52832 and nrF SDK, please visit http://infocenter.nordicsemi.com/
+nrF52832 및 nrF SDK에 관한 추가 정보는 http://infocenter.nordicsemi.com/ 를 참고하자.
 
-## Supported IDE
+## 지원하는 IDE
 
-The examples are ready to use with the following IDE :
+예제들은 다음 IDE를 사용한다 :
 * Segger Embedded Studio (SES)
 * Keil KEIL µVision
 
-## Segger Embedded Studio
+## SES(Segger Embedded Studio)
 
-Each example contains a emproject project file for SES. The examples compile and load cleanly to the DWM1001.   
-The project was created with the SES version V3.34a. 
+각 예제는 SES용 emproject proejct 파일을 포함하고 있다. 예제들은 컴파일되어 DWM1001로 로드된다.
+프로젝트는 SES version V3.34a로 생성되었다.
 
-SES has a free license for nrF52832 development. Consequently, this IDE can be used without any limitation for DWM1001 development.
+SES는 nrF52832 개발에 자유롭게 사용할 수 있다. 결과적으로 이 IDE는 DWM1001 개발에 제약없이 사용할 수 있다.
 
-For more information regarding Segger Embedded Studio, please visit https://www.segger.com/products/development-tools/embedded-studio/
+Segger Embedded Studio에 대한 상세 정보는 https://www.segger.com/products/development-tools/embedded-studio/ 를 참고하자.
 
-For more information about free license for nrF52832, please read https://www.nordicsemi.com/News/News-releases/Product-Related-News/Nordic-Semiconductor-adds-Embedded-Studio-IDE-support-for-nRF51-and-nRF52-SoC-development
+nrF52832에 대한 공짜 라이센스에 대한 정보는 https://www.nordicsemi.com/News/News-releases/Product-Related-News/Nordic-Semiconductor-adds-Embedded-Studio-IDE-support-for-nRF51-and-nRF52-SoC-development 를 참고하자.
 
-### SES : Additional Package
+### SES : 추가 Package
 
-When using SES IDE, you will need to install the following package :
+SES IDE를 사용하는 경우 아래 package를 설치하도록 하자. :
 
 Package                                                                                                                           
 CMSIS 5 CMSIS-CORE Support Package (version 5.02)                                                                           
 CMSIS-CORE Support Package (version 4.05)                                                                           
 Nordic Semiconductor nRF CPU Support Package (version 1.06)                                                                           
 
-They can be install from SES itself, through the package manager in the tools menu. 
+tools 메뉴에서 package manager를 통해서 SES 자체에서 설치할 수 있다.
 
 ## KEIL µVision IDE
 
-Each example contains a µVision5 project file for Keil µVision IDE. The examples compile and load cleanly to the DWM1001.
-The project was created with the KEIL uVision version V5.24.2.0. 
-
-Keil µVision has a free license for project up to 32KB. For more information regarding Keil µVision, please visit http://www2.keil.com/mdk5/uvision/
+각 예제는 Keil µVision IDE를 위한 µVision5 project 파일을 포함하고 있다. 이 예제들은 컴파일 및 DWM1001로 로드된다.
+이 프로젝트는 KEIL uVision version V5.24.2.0로 생성되었다. Keil µVision 관련해서 더 많은 정보는 http://www2.keil.com/mdk5/uvision/ 를 참고하세요.
 
 ### µVision Error: Flash Download failed - "Cortex-M4"
 
-This error can be observed if there is a memory conflict between the binary to load and the current firmware on the target hardware. This issue can be easily fixed by fully erasing the target device 's flash memory. Keil µVision cannot perform a full erase and the following free tool can be used :
+이 에러는 로드되는 binary와 타겟 HW상에 있는 현재 firmware 사이에 메모리 충돌이 있는 경우에 나타난다. 이 이슈는 타겟 장치의 flash 메모리를 완전히 삭제하는 경우 쉽게 해결할 수 있다. Keil µVision는 완전히 삭제를 수행할 수 없어서 아래와 같은 도구를 사용해야 한다:
 
 * J-flash lite 
 * nrfjprog command line script
 
-For more information about the issue, please see :
+이슈에 관련된 더 상세한 정보는 다음을 보자. :
 
 https://devzone.nordicsemi.com/f/nordic-q-a/18278/error-flash-download-failed---cortex---m4-while-flashing-softdevice-from-keil-uvision-5
 
 ## Example Details 
 
-The SS-TWR scheme can be implemented using two DWM1001 modules, the first one programmed as an initiator and the second one as a responder.
+SS-TWR scheme은 DWM1001 모듈을 2개를 사용해서 구현할 수 있다. 한 개는 initiator로 프로그램하고 다른 한 쪽은 responder로 프로그램한다.
 
 ### Single Sided Two Way Ranging -- Initiator
 
-This example contains the source code for the initiator. The initiator will send a frame, wait for the response from the receiver, calculate the distance and output it on the UART (can be observed on a serial terminal)
+이 예제는 initiator에 대한 소스 코드를 포함하고 있다. initiator는 frame을 보내고 receiver로부터 response를 기다리고 거리는 계산하고 출력을 UART로 보낸다.(serial 터미널에서 나오는 값을 보면 된다.)
 
 ```
 dwm1001-keil-examples/examples/ss_twr_init/
-├── config                    // Contains sdk_config.h file for nrF SDK 14.2 customization
-├── main.c                    // Initialization and main program
+├── config                    // nrF SDK 14.2 커스텀을 위한 sdk_config.h 파일 포함
+├── main.c                    // Initialization 와 main program
 ├── ss_init_main.c            // Single sided initiator core program
 ├── UART                      // Uart 
 ├── SES
@@ -95,32 +93,32 @@ dwm1001-keil-examples/examples/ss_twr_init/
      └── ss_twr_init.uvprojx  // Keil uvision project
 
 ```
-The application function is detailed in the main.c and the ss_init_main.c files. 
+이 어플리케이션 기능은 main.c와 ss_init_main.c 파일에서 상세한 내용을 볼 수 있다.
 
-Calibration may be necessary in order to have an accurate measurement. It can be done by adjusting the antenna delay which is hardware dependent. 
+정확한 측정값을 가지기 위해서 캘리브레이션이 필요하다. 하드웨어에 따라서 안테나 지연을 조정하는 방식으로 할 수 있다.
 
 ### Single Sided Two Way Ranging -- Responder
 
-This example contains the source code for the responder. The receiver will receive a frame from the initiator and send the corresponding answer.
+이 예제는 responder에 대해서 소스 코드를 포함하고 있다. receiver는 initiator로부터 하나의 frame을 수신하고 관련 답변을 전송한다.
 
 ```
 dwm1001-keil-examples/examples/ss_twr_resp/
-├── config                    // Contains sdk_config.h file for nrF SDK 14.2 customization
-├── main.c                    // Initialization and main program
+├── config                    // nrF SDK 14.2 커스텀을 위한 sdk_config.h 파일 포함
+├── main.c                    // Initialization와 main program
 ├── ss_resp_main.c            // Single sided responder core program
 ├── SES
 │   └── ss_twr_resp.emProject // Segger Embedded Studio project
 └── Keil uvision
      └── ss_twr_resp.uvprojx  // Keil uvision project
 ```
-The application function is detailed in the main.c and the ss_resp_main.c files. 
+main.c와 ss_resp_main.c에서 상세한 내용을 볼 수 있다.
 
-Calibration may be necessary in order to have an accurate measurement. It can be done by adjusting the antenna delay which is hardware dependent. 
+정확한 측정값을 얻기 위해서 칼리브레이션이 필요하다. 하드웨어에 따라서 안테나 지연을 조정하는 방식으로 할 수 있다.
 
 ### Two Wire Interface Accelerometer
 
-This example implements a TWI between the LIS2DH12 and the nrF52832. 
-The blue led will be on when a motion is detected by the LIS2DH12. It also reports the accelerometer state on the UART.
+이 예제는 LIS2DH12와 nrF52832 사이에 TWI를 구현한다.
+blue led는 LIS2DH12가 움직임을 포착하면 빛이 난다. UART로 가속 상태를 리포팅한다.
 
 ```
 dwm1001-keil-examples/examples/twi_accel/
@@ -134,8 +132,7 @@ dwm1001-keil-examples/examples/twi_accel/
 └── Keil uvision
      └── twi_accel.uvprojx  // Keil uvision project
 ```
-The application function is detailed in the main.c file.
-
+main.c 파일에 상세한 내용을 확인할 수 있다.
 
 
 
